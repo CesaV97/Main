@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 usuario = user.getText().toString();
                 contraseña = pass.getText().toString();
 
-                if (usuario == "" || contraseña == "") {
+                if (usuario == null || contraseña == null) {
                     Toast.makeText(getApplicationContext(), "Rellenar campos necesarios *", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -59,78 +59,14 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 //Toast.makeText(this, "Usuario ingresado", Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(MainActivity.this, Menu01.class);
                 intent.putExtra("extra",usuario);
-
+                //intent.putExtra("key", value);
                 startActivity(intent);
+                //startActivity(intent);
             }
         });
 
     }
 }
-    /*
-    public void GetTextFromSQL(View v)
-    {
-        TextView tx1 = (TextView) findViewById(R.id.textView);
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        TextView tx3 = (TextView) findViewById(R.id.textView3 );
 
-        try{
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            connect = connectionHelper.connectionClass();
-            if(connect != null){
-                String query = "Select * from tbpersonas";
-                Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery(query);
-                
-                while (rs.next())
-                {
-                    tx1.setText(rs.getString( 3));
-                    tx2.setText(rs.getString( 4));
-                }
-            }
-        }
-        catch (Exception ex){
-            Log.e("error ", ex.getMessage());
-
-        }
-    }
-    public void Insert(View v)
-    {
-        TextView tx3 = (TextView) findViewById(R.id.textView3 );
-        int result = ope.adduser();
-
-        if (result  != 1)
-        {
-            tx3.setText("NOK");
-            //tx3.setText( ("Error "+ result));
-            //Log.e("Error ","Error");
-            return;
-        }
-        //tx3.setText( ("Error "+ result));
-        tx3.setText("OK");
-    }
-    public  void password(View v) {
-        String usuario = "";
-        String contraseña = "";
-
-        TextView user = (TextView) findViewById(R.id.txt_usuario);
-        TextView pass = (TextView) findViewById(R.id.txt_pass);
-        usuario = user.getText().toString();
-        contraseña = pass.getText().toString();
-
-        if (usuario == "" || contraseña == "") {
-            Toast.makeText(this, "Rellenar campos necesarios *", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        int Resultado = ope.getPassword(usuario, contraseña);
-
-        if (Resultado != 1) {
-            Toast.makeText(this, "Usuario no existe", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        Toast.makeText(this, "Usuario ingresado", Toast.LENGTH_SHORT).show();
-    }
-
-*/
